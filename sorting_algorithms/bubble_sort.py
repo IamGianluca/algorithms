@@ -1,9 +1,9 @@
 def bubble_sort(L):
     """
-    Sort list using bubble sort algorithm
+    (list) -> NoneType
+    Sort list from smallest to largest using bubble sort algorithm
 
-    :param L:
-    :return:
+    :param L: unsorted list
 
     >>> L = [7, 3, 5, 2]
     >>> bubble_sort(L)
@@ -23,6 +23,7 @@ def bubble_sort(L):
                 L[i], L[i + 1] = L[i + 1], L[i]
 
         end -= 1
+
 
 if __name__ == "__main_":
     import doctest
