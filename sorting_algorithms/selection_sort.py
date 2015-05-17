@@ -1,8 +1,10 @@
 def selection_sort(L):
     """
+    (list) -> NoneType
+
+    Sort list from smallest to largest using selection sort algorithm
+
     :param L: unsorted list
-    :return: this is a method, there is no return function. The method sorts a list using
-      selection sort algorithm
 
     >>> L = [2, 7, 5, 3]
     >>> selection_sort(L)
