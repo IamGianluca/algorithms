@@ -31,6 +31,7 @@ def insert(L, i):
 
 def insertion_sort(L):
     """ (list) -> NoneType
+
     Sort the items of L from smallest to largest
 
     :param L: unsorted list

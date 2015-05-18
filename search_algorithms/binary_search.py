@@ -6,7 +6,7 @@ def binary_search(L, v):
 
     Return the index of the first occurrence of v in L, return -1 if v is not
       in L.
-      
+
     :param L: list we want to scan
     :param v: element we want to search within L
 
