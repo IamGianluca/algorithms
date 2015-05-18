@@ -1,6 +1,6 @@
 def bubble_sort(L):
-    """
-    (list) -> NoneType
+    """ (list) -> NoneType
+
     Sort list from smallest to largest using bubble sort algorithm
 
     :param L: unsorted list

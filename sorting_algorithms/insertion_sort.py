@@ -1,8 +1,8 @@
 def insert(L, i):
-    """
-    (list, int) -> NoneType
+    """ (list, int) -> NoneType
 
     Precondition: L[:i] is sorted from smallest to largest
+
     Move L[i] on where it belongs in L[:i+1]
 
     :param L: unsorted list
@@ -30,10 +30,9 @@ def insert(L, i):
 
 
 def insertion_sort(L):
-    """
-    (list) -> NoneType
-
+    """ (list) -> NoneType
     Sort the items of L from smallest to largest
+
     :param L: unsorted list
 
     >>> L = [2, 5, 9, 1]

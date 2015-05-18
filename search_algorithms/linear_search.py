@@ -1,9 +1,11 @@
 def linear_search(L, v):
-    """
-    (list, object) -> int
+    """ (list, object) -> int
 
     Return the index of the first occurrence of v in L, if there is one. If v is not
       in L, then return -1
+
+    :param L: list we want to scan
+    :param v: element we want to search within L
 
     >>> linear_search([2, 3, 5, 7], 2)
     0
@@ -23,6 +25,7 @@ def linear_search(L, v):
         return -1
     else:
         return i
+
 
 if __name__ == '__main__':
     import doctest

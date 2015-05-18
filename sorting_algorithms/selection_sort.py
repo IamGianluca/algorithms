@@ -1,6 +1,5 @@
 def selection_sort(L):
-    """
-    (list) -> NoneType
+    """ (list) -> NoneType
 
     Sort list from smallest to largest using selection sort algorithm
 
@@ -22,12 +21,12 @@ def selection_sort(L):
 
 
 def get_index_of_smallest(L, i):
-    """
-    (list, int) -> int
+    """ (list, int) -> int
+
+    Return the index of the smallest element of L
 
     :param L: list we want to analyse
     :param i: index from where we want to start
-    :return: index of smallest object in the list
     """
 
     # The index of the smallest item so far
