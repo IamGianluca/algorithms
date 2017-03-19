@@ -1,5 +1,3 @@
-from unittest.mock import patch
-
 import numpy as np
 from numpy.testing import assert_array_equal
 import pytest
@@ -10,8 +8,8 @@ from sampling.metropolis import MetropolisHastings
 
 @pytest.fixture(scope='function')
 def sampler(data, iterations, multivariate_normal):
-    return MetropolisHastings(target=multivariate_normal, iterations=iterations,
-                              data=data)
+    return MetropolisHastings(target=multivariate_normal,
+                              iterations=iterations, data=data)
 
 
 class TestMetropolisHastings:
@@ -59,18 +57,20 @@ class TestMetropolisHastings:
         result = sampler._evaluate_proposal(current=current, proposal=proposal)
         assert result == True
 
-    def test_reject_worse_point(self, dimensions, sampler):
+    def test_reject_worse_point(self, monkeypatch, dimensions, sampler):
         """When the suggested point has a lower posterior density the proposal
         should only probabilistically be accepted.
         """
-        # mock pick form from uniform distribution in order to reject the
-        # proposal if the proposal point is worse than the current point
-        with patch('numpy.random.uniform', return_value=1):
-            current = np.zeros(dimensions)
-            proposal = np.random.randn(dimensions)
-            result = sampler._evaluate_proposal(current=current,
-                                                     proposal=proposal)
-            assert result == False
+        # monkeypatch the sample from the uniform distribution to the value 1,
+        # this will enforce the rejection of the proposal point
+        def monkeyreturn():
+            return 1
+        monkeypatch.setattr(np.random, 'uniform', monkeyreturn)
+        current = np.zeros(dimensions)  # distribution mode
+        proposal = np.random.randn(dimensions)
+        result = sampler._evaluate_proposal(current=current,
+                                            proposal=proposal)
+        assert result == False
 
     def test_element_added_to_trace(self, monkeypatch, multivariate_normal,
                                     iterations, dimensions, data):
@@ -85,13 +85,11 @@ class TestMetropolisHastings:
             return np.ones(dimensions) * -1
         monkeypatch.setattr(np.random, 'rand', monkeyreturn1)  # starting point
         monkeypatch.setattr(np.random, 'randn', monkeyreturn2) # proposal
-    
+
         # when
         sampler = MetropolisHastings(target=multivariate_normal,
                                      iterations=iterations,
                                      data=data)
-
-        # when
         traces = sampler.optimise()
 
         # then
