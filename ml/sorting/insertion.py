@@ -1,17 +1,16 @@
+import copy
+
+
 def insert(L, i):
-    """ (list, int) -> NoneType
+    """Move i element of l, to correct place in l[:i+1].
 
-    Precondition: L[:i] is sorted from smallest to largest
+    Note: L[:i] is sorted from smallest to largest.
 
-    Move L[i] on where it belongs in L[:i+1]
+    Args:
+        L (list): unsorted list.
+        i (int): index of first unsorted element.
 
-    :param L: unsorted list
-    :param i: index of first unsorted element
-
-    >>> L = [3, 5, 7, 1]
-    >>> insert(L, 3)
-    >>> L
-    [1, 3, 5, 7]
+    Side effects:
     """
 
     length = len(L[:i])
@@ -30,24 +29,17 @@ def insert(L, i):
 
 
 def insertion_sort(L):
-    """ (list) -> NoneType
+    """Sort the items of L from smallest to largest.
 
-    Sort the items of L from smallest to largest
+    Args:
+        L (list): Unsorted list.
 
-    :param L: unsorted list
-
-    >>> L = [2, 5, 9, 1]
-    >>> insertion_sort(L)
-    >>> L
-    [1, 2, 5, 9]
+    Returns:
+        list: Sorted list.
     """
-
-    length = len(L)
+    target = copy.copy(L)
+    length = len(target)
 
     for i in range(length):
-        insert(L, i)
-
-
-if __name__ == '__main__':
-    import doctest
-    doctest.testmod()
+        insert(target, i)
+    return target

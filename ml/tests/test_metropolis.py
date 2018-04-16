@@ -25,9 +25,8 @@ class TestMetropolisHastings:
             # NOTE: this test doesn't use *self.data*, hence we need to
             # instantiate a new sampler
             data = np.random.randn(dimensions, observations)
-            sampler = MetropolisHastings(target=stats.norm(),
-                                         iterations=iterations,
-                                         data=data)
+            sampler = MetropolisHastings(
+                    target=stats.norm(), iterations=iterations, data=data)
             assert sampler.shape == (dimensions, observations)
 
     def test_starting_point_shape(self, data, sampler):
@@ -68,8 +67,7 @@ class TestMetropolisHastings:
         monkeypatch.setattr(np.random, 'uniform', monkeyreturn)
         current = np.zeros(dimensions)  # distribution mode
         proposal = np.random.randn(dimensions)
-        result = sampler._evaluate_proposal(current=current,
-                                            proposal=proposal)
+        result = sampler._evaluate_proposal(current=current, proposal=proposal)
         assert result == False
 
     def test_element_added_to_trace(self, monkeypatch, multivariate_normal,
@@ -98,8 +96,7 @@ class TestMetropolisHastings:
 
     def test_trace(self, iterations, multivariate_normal, data):
         """At every iteration one point should be added to the traces."""
-        sampler = MetropolisHastings(target=multivariate_normal,
-                                     iterations=iterations,
-                                     data=data)
+        sampler = MetropolisHastings(
+                target=multivariate_normal, iterations=iterations, data=data)
         traces = sampler.optimise()
         assert len(traces) == iterations

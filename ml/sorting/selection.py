@@ -1,32 +1,35 @@
-def selection_sort(L):
-    """ (list) -> NoneType
+import copy
 
-    Sort list from smallest to largest using selection sort algorithm
 
-    :param L: unsorted list
+def selection_sort(l):
+    """Sort list from smallest to largest using selection sort algorithm.
 
-    >>> L = [2, 7, 5, 3]
-    >>> selection_sort(L)
-    >>> L
-    [2, 3, 5, 7]
+    Args:
+        l (list): Unsorted list.
+
+    Returns:
+        list: Sorted list.
     """
+    target = copy.copy(l)
+    end = len(target)
 
-    end = len(L)
-
-    # Find the index of the smallest element in L[i:] and swap that item
+    # Find the index of the smallest element in target[i:] and swap that item
     #   with the item at index i
     for i in range(end):
-        index_of_smallest = get_index_of_smallest(L, i)
-        L[index_of_smallest], L[i] = L[i], L[index_of_smallest]
+        idx_of_smallest = get_index_of_smallest(target, i)
+        target[idx_of_smallest], target[i] = target[i], target[idx_of_smallest]
+    return target
 
 
 def get_index_of_smallest(L, i):
-    """ (list, int) -> int
+    """Return the index of the smallest element of L.
 
-    Return the index of the smallest element of L
+    Args:
+        L (list): List we want to analyse.
+        i (int): Index from where we want to start.
 
-    :param L: list we want to analyse
-    :param i: index from where we want to start
+    Returns:
+        int: Index of smallest element of L.
     """
 
     # The index of the smallest item so far
@@ -38,8 +41,3 @@ def get_index_of_smallest(L, i):
             index_of_smallest = j
 
     return index_of_smallest
-
-
-if __name__ == '__main__':
-    import doctest
-    doctest.testmod()

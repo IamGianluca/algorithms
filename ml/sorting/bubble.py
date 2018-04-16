@@ -1,30 +1,21 @@
-def bubble_sort(L):
-    """ (list) -> NoneType
+import copy
 
-    Sort list from smallest to largest using bubble sort algorithm
 
-    :param L: unsorted list
+def bubble_sort(l):
+    """Sort list from smallest to largest using bubble sort algorithm.
 
-    >>> L = [7, 3, 5, 2]
-    >>> bubble_sort(L)
-    >>> L
-    [2, 3, 5, 7]
+    Args:
+        l (list): unsorted list.
+
+    Return:
+        list: Sorted list.
     """
-
-    # The index of the last unsorted item
-    begin = 0
-    end = len(L) - 1
+    target = copy.copy(l)
+    begin, end = 0, len(target) - 1
 
     while end != 0:
-
-        # Bubble once through the unsorted section to move the largest item in index end
         for i in range(end):
-            if L[i] > L[i + 1]:
-                L[i], L[i + 1] = L[i + 1], L[i]
-
+            if target[i] > target[i + 1]:
+                target[i], target[i + 1] = target[i + 1], target[i]
         end -= 1
-
-
-if __name__ == "__main_":
-    import doctest
-    doctest.testmod()
+    return target
