@@ -25,8 +25,3 @@ def linear_search(L, v):
         return -1
     else:
         return i
-
-
-if __name__ == '__main__':
-    import doctest
-    doctest.testmod()

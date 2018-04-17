@@ -35,7 +35,7 @@ class MetropolisHastings(object):
         """Sample from target distribution.
 
         Returns:
-            (list) A sample of points from the target distribution.
+            list: A sample of points from the target distribution.
         """
         current_position = self._random_initialisation()
         for iteration in range(self.iterations):
@@ -59,7 +59,7 @@ class MetropolisHastings(object):
             current_position (numpy.array): Current position.
 
         Returns:
-            (numpy.array) New candidate point.
+            numpy.array: New candidate point.
         """
         # TODO: use current_position as mean of randn, to improve efficiency
         jump = np.random.randn(self.shape[0])
@@ -73,7 +73,7 @@ class MetropolisHastings(object):
             proposal (numpy.array): Proposed move.
 
         Returns:
-            (bool) Whether the proposed move is accepted.
+            bool: Whether the proposed move is accepted.
         """
         acceptance_probability = min(
             np.exp(self.target.logpdf(x=proposal) - \

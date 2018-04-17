@@ -9,13 +9,6 @@ def binary_search(L, v):
 
     :param L: list we want to scan
     :param v: element we want to search within L
-
-    >>> binary_search([2, 3, 5, 7], 2)
-    0
-    >>> binary_search([2, 3, 5, 7], 5)
-    2
-    >>> binary_search([2, 3, 5, 7], 9)
-    -1
     """
 
     b = 0
@@ -32,8 +25,3 @@ def binary_search(L, v):
         return -1
     else:
         return b
-
-
-if __name__ == '__main__':
-    import doctest
-    doctest.testmod()
