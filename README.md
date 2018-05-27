@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/IamGianluca/algorithms.svg?branch=master)](https://travis-ci.org/IamGianluca/algorithms)
+
 # Collection of Computer Science and Machine Learning algorithms
 
 This is a small repository which I use to keep track of some algorithms I've learned over the years. These are hardly as fast as some optimised versions you can find in popular Machine Learning libraries -- such as [SciKit-Learn](http://scikit-learn.org/) -- so if you're looking for some stuff you can use in production I would recommend you to look elsewhere.
